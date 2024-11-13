@@ -14,37 +14,57 @@
 
                 <div class="p-6 text-gray-900">
                     <div class="p-3 bg-gray-100 rounded-lg mb-4">
-                        {{ $users->links()}}
+                        {{ $users->links() }}
                     </div>
 
                     <table class="table-auto w-full">
                         <thead class="text-left bg-gray-100">
                             <tr>
-                                <th>Nivel</th>
+                                <th class="text-center">Nivel</th>
                                 <th>Nome</th>
                                 <th class="p-4">E-mail</th>
                                 <th>Data de Cadastro</th>
-                                <th>Ações</th>
+                                <th>Nível de Acesso</th>
+
+                                @can('level')
+                                    <th>Ações</th>
+                                @endcan
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach ($users as $user)
                                 <tr class="hover:bg-gray-100">
-                                    <td>icon</td>
+                                    <td class="text-center">
+                                        @if ($user->level == 'admin')
+                                            <i class="fa-solid fa-user-ninja"></i>
+                                        @else
+                                            <i class="fa-regular fa-user"></i>
+                                        @endif
+                                    </td>
                                     <td>{{ $user->name }}</td>
                                     <td class="p-2">{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
+<<<<<<< HEAD
                                     <td>
                                         <a href="#">Editar</a>
                                     </td>
+=======
+                                    <td>{{ $user->level }}</td>
+
+                                    @can('level')
+                                        <td>
+                                            <a href="{{ route('user.edit', $user->id) }}">Editar Nível...</a>
+                                        </td>
+                                    @endcan
+>>>>>>> users
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
 
                     <div class="p-3 bg-gray-100 rounded-lg mt-4">
-                        {{ $users->links()}}
+                        {{ $users->links() }}
                     </div>
                 </div>
             </div>
