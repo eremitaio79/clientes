@@ -36,7 +36,7 @@
                                     <td class="p-2">{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
                                     <td>
-                                        <a href="#">Editar...</a>
+                                        <a href="#">Editar</a>
                                     </td>
                                 </tr>
                             @endforeach
