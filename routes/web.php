@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Users.
-    Route::get('/users-index', [UserController::class, 'index'])->name('user.index'); // index page.
-    Route::get('/user-edit/{id}', [UserController::class, 'edit'])->name('user.edit'); // edit form page.
-    Route::put('/user-update/{id}', [UserController::class, 'update'])->name('user.update'); // update page from edit page.
+    Route::get('/users-index', [UserController::class, 'index'])->name('user.index');
+
+    // Rota para Clientes.
+    Route::resources([
+        'cliente' => ClienteController::class
+    ]);
 });
 
 require __DIR__.'/auth.php';
