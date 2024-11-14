@@ -11,6 +11,41 @@
                 <div class="p-6 text-gray-900">
                     <p class="mb-4">Olá <strong>{{ Auth::user()->name }}</strong></p>
 
+                    <p class="mb-4 text-end">
+                        <a href="{{ route('cliente.index') }}" target="_self" class="bg-gray-500 text-white rounded py-2 px-5">
+                            Lista de clientes
+                        </a>
+                    </p>
+
+                    @if(session('msg'))
+                    <p id="message" class="bg-green-700 p-2 rounded-lg text-center text-white mb-5">
+                        {{ session('msg') }}<br /><span id="countdown">5</span> segundos restantes
+                    </p>
+                    @endif
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            let countdown = 5; // Define a contagem inicial em segundos
+                            const messageElement = document.getElementById("message");
+                            const countdownElement = document.getElementById("countdown");
+
+                            const countdownInterval = setInterval(function() {
+                                countdown--; // Diminui a contagem a cada segundo
+                                if (countdownElement) {
+                                    countdownElement.textContent = countdown; // Atualiza o texto com a contagem regressiva
+                                }
+
+                                if (countdown <= 0) {
+                                    clearInterval(countdownInterval); // Para o intervalo quando a contagem chega a zero
+                                    if (messageElement) {
+                                        messageElement.style.display = "none"; // Oculta a mensagem
+                                    }
+                                }
+                            }, 1000); // 1000 ms = 1 segundo
+                        });
+                    </script>
+
+
                     <form action="{{ route('cliente.store') }}" method="POST" target="_self">
                         @csrf
 
