@@ -45,9 +45,6 @@
                                     <td>{{ $user->name }}</td>
                                     <td class="p-2">{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td>
-                                        <a href="#">Editar</a>
-                                    </td>
                                     <td>{{ $user->level }}</td>
 
                                     @can('level')
