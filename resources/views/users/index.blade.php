@@ -45,11 +45,9 @@
                                     <td>{{ $user->name }}</td>
                                     <td class="p-2">{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-<<<<<<< HEAD
                                     <td>
                                         <a href="#">Editar</a>
                                     </td>
-=======
                                     <td>{{ $user->level }}</td>
 
                                     @can('level')
@@ -57,7 +55,6 @@
                                             <a href="{{ route('user.edit', $user->id) }}">Editar Nível...</a>
                                         </td>
                                     @endcan
->>>>>>> users
                                 </tr>
                             @endforeach
                         </tbody>
