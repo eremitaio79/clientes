@@ -11,11 +11,13 @@
                 <div class="p-6 text-gray-900">
                     <p class="mb-4">Olá <strong>{{ Auth::user()->name }}</strong></p>
 
+                    @can('level')
                     <p class="mb-4 text-end">
                         <a href="{{ route('cliente.index') }}" target="_self" class="bg-gray-500 text-white rounded py-2 px-5">
                             Lista de clientes
                         </a>
                     </p>
+                    @endcan
 
                     @if(session('msg'))
                     <p id="message" class="bg-green-700 p-2 rounded-lg text-center text-white mb-5">

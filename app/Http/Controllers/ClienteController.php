@@ -3,17 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    // Método contrutor.
+    public function __construct()
+    {
+        $this->middleware('can:level')->only('index');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         return view('clientes.index', [
-            'clientes' => Cliente::orderBy('nome')->paginate('1')
+            'clientes' => Cliente::orderBy('nome')->paginate('10')
+        ]);
+    }
+
+    public function meus_clientes(User $id)
+    {
+        $user = User::where($id->id)->first();
+        $clientes = $user->customers()->get();
+
+        return view('clientes.meus_clientes', [
+            
         ]);
     }
 
