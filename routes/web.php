@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,11 @@ Route::middleware('auth')->group(function () {
 
     // Users.
     Route::get('/users-index', [UserController::class, 'index'])->name('user.index');
+
+    // Rota para Clientes.
+    Route::resources([
+        'cliente' => ClienteController::class
+    ]);
 });
 
 require __DIR__.'/auth.php';
