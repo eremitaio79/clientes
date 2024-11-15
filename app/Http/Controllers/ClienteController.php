@@ -25,11 +25,13 @@ class ClienteController extends Controller
 
     public function meus_clientes(User $id)
     {
-        $user = User::where($id->id)->first();
+        // $user = User::where($id->id)->first();
+        $user = User::find($id->id);
+
         $clientes = $user->customers()->get();
 
         return view('clientes.meus_clientes', [
-            
+
         ]);
     }
 
@@ -48,7 +50,7 @@ class ClienteController extends Controller
     {
         // dd($request);
         $cliente = new Cliente();
-        
+
         // Campos da tabela clientes na mesma ordem da tabela e com os mesmo nomes.
         $cliente->user_id = $request->user_id;
         $cliente->nome = $request->nome;
