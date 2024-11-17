@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clientes') }}
+            {{ __('Edição de Clientes') }}
         </h2>
     </x-slot>
 
@@ -66,13 +66,13 @@
 
                             <div class="bg-gray-100 p-4 rounded overflow-hidden">
                                 <label for="nome">Nome</label>
-                                <input type="text" name="nome" id="nome" class="w-full rounded"
+                                <input type="text" name="nome" id="nome" value="{{ $cliente->nome }}" class="w-full rounded"
                                     placeholder="Informe o nome" required autofocus />
                             </div>
 
                             <div class="bg-gray-100 p-4 rounded overflow-hidden">
                                 <label for="email">E-mail</label>
-                                <input type="email" name="email" id="email" class="w-full rounded"
+                                <input type="email" name="email" id="email" value="{{ $cliente->email }}" class="w-full rounded"
                                     placeholder="Informe o e-mail" required />
                             </div>
 

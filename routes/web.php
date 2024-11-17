@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function () {
         'cliente' => ClienteController::class
     ]);
 
+    // Meus Clientes.
+    Route::get('/meus_clientes/{id}', [ClienteController::class, 'meus_clientes'])->name('meus.clientes');
+
 
 });
 

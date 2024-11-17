@@ -25,13 +25,13 @@ class ClienteController extends Controller
 
     public function meus_clientes(User $id)
     {
-        // $user = User::where($id->id)->first();
+        // $user = User::where('id', $id->id)->first();
         $user = User::find($id->id);
 
         $clientes = $user->customers()->get();
 
         return view('clientes.meus_clientes', [
-
+            'clientes' => $clientes
         ]);
     }
 
@@ -69,7 +69,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return view('clientes.show', ['cliente' => $cliente]);
     }
 
     /**
@@ -77,7 +77,8 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        // return 'Editando ' . $cliente->nome;
+        return view('clientes.edit', ['cliente' => $cliente]);
     }
 
     /**
