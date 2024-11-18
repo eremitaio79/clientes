@@ -56,8 +56,9 @@
                     </script>
 
 
-                    <form action="{{ route('cliente.store') }}" method="POST" target="_self">
+                    <form action="{{ route('cliente.update', $cliente->id) }}" method="POST" target="_self">
                         @csrf
+                        @method('PUT')
 
                         <fieldset class="border-2 rounded-lg p-6">
                             <legend>&nbsp;Preencha todos os campos&nbsp;</legend>
@@ -78,25 +79,25 @@
 
                             <div class="bg-gray-100 p-4 rounded overflow-hidden">
                                 <label for="telefone">Telefone</label>
-                                <input type="tel" name="telefone" id="telefone" class="w-full rounded"
+                                <input type="tel" name="telefone" id="telefone" value="{{ $cliente->telefone }}" class="w-full rounded"
                                     placeholder="Informe o telefone" required />
                             </div>
 
                             <div class="bg-gray-100 p-4 rounded overflow-hidden">
                                 <label for="empresa">Empresa</label>
-                                <input type="text" name="empresa" id="empresa" class="w-full rounded"
+                                <input type="text" name="empresa" id="empresa" value="{{ $cliente->empresa }}" class="w-full rounded"
                                     placeholder="Informe o nome da empresa" required />
                             </div>
 
                             <div class="bg-gray-100 p-4 rounded overflow-hidden">
                                 <label for="telefone_comercial">Telefone Comercial</label>
-                                <input type="tel" name="telefone_comercial" id="telefone_comercial"
+                                <input type="tel" name="telefone_comercial" id="telefone_comercial" value="{{ $cliente->telefone_comercial }}"
                                     class="w-full rounded" placeholder="Informe o telefone comercial" required />
                             </div>
 
                             <div class="bg-gray-100 p-4 rounded overflow-hidden text-end">
-                                <input type="submit" value="Salvar" class="bg-blue-900 text-white rounded py-1 px-5">
-                                <input type="reset" value="Limpar" class="bg-red-500 text-white rounded py-1 px-3">
+                                <input type="submit" value="Salvar Alterações" class="bg-blue-900 text-white rounded py-1 px-5">
+                                <a href="{{ route('user.index') }}" class="bg-red-500 text-white rounded py-2 px-5">Cancelar</a>
                             </div>
                         </fieldset>
                     </form>
