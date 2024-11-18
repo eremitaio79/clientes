@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
 
     // Meus Clientes.
     Route::get('/meus_clientes/{id}', [ClienteController::class, 'meus_clientes'])->name('meus.clientes');
-
+    Route::get('confirma_delete/{id}', [ClienteController::class, 'confirma_delete'])->name('confirma.delete');
 
 });
 
